@@ -7,15 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const thoughtsSummaryElement = document.getElementById('thoughtsSummary');
     const challengesSummaryElement = document.getElementById('challengesSummary');
     const todosSummaryElement = document.getElementById('todosSummary');
+    const jumpToDateInput = document.getElementById('jumpToDate');
 
     let currentDate = new Date();
     let selectedDate = new Date();
 
     function generateCalendar(year, month) {
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-        const daysInMonth = lastDay.getDate();
-        const startingDay = firstDay.getDay();
+        const firstDay = new Date(Date.UTC(year, month, 1));
+        const lastDay = new Date(Date.UTC(year, month + 1, 0));
+        const daysInMonth = lastDay.getUTCDate();
+        const startingDay = firstDay.getUTCDay();
 
         currentMonthElement.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
 
@@ -30,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (date > daysInMonth) {
                     row += '<td></td>';
                 } else {
-                    const isToday = date === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear();
-                    const isSelected = date === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear();
+                    const isToday = date === currentDate.getUTCDate() && month === currentDate.getUTCMonth() && year === currentDate.getUTCFullYear();
+                    const isSelected = date === selectedDate.getUTCDate() && month === selectedDate.getUTCMonth() && year === selectedDate.getUTCFullYear();
                     const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
                     const { hasThought, hasChallenge, hasTodo } = checkContentForDate(dateString);
                     const cellClass = `${isToday ? 'today' : ''} ${hasThought ? 'has-thought' : ''} ${hasChallenge ? 'has-challenge' : ''} ${hasTodo ? 'has-todo' : ''} ${isSelected ? 'selected' : ''}`;
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('#calendarBody td[data-date]').forEach(cell => {
             cell.addEventListener('click', function() {
                 const date = this.getAttribute('data-date');
-                selectedDate = new Date(date);
+                selectedDate = new Date(date + 'T00:00:00Z');
                 updateCalendar();
                 showDayDetails(date);
             });
@@ -71,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showDayDetails(dateString) {
-        selectedDateElement.textContent = new Date(dateString).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const displayDate = new Date(dateString + 'T00:00:00Z');
+        selectedDateElement.textContent = displayDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
         // Show thoughts
         const thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
@@ -113,19 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCalendar() {
-        generateCalendar(selectedDate.getFullYear(), selectedDate.getMonth());
+        generateCalendar(selectedDate.getUTCFullYear(), selectedDate.getUTCMonth());
     }
 
     prevMonthButton.addEventListener('click', function() {
-        selectedDate.setMonth(selectedDate.getMonth() - 1);
+        selectedDate.setUTCMonth(selectedDate.getUTCMonth() - 1);
         updateCalendar();
     });
 
     nextMonthButton.addEventListener('click', function() {
-        selectedDate.setMonth(selectedDate.getMonth() + 1);
+        selectedDate.setUTCMonth(selectedDate.getUTCMonth() + 1);
         updateCalendar();
     });
 
+    jumpToDateInput.addEventListener('change', function() {
+        selectedDate = new Date(this.value + 'T00:00:00Z');
+        updateCalendar();
+        showDayDetails(this.value);
+    });
+
+    // Initialize the calendar
     updateCalendar();
     showDayDetails(selectedDate.toISOString().split('T')[0]);
 });
