@@ -1,6 +1,7 @@
 body {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #f8f9fa;
+    color: #343a40;
+    font-family: 'Arial', sans-serif;
 }
 
 .container {
@@ -8,11 +9,48 @@ body {
 }
 
 h1 {
-    color: #000000;
+    color: #007bff;
     font-weight: bold;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.btn-outline-dark:hover {
-    background-color: #000000;
-    color: #ffffff;
+.lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover,
+.btn-outline-warning:hover,
+.btn-outline-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-outline-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
 }
