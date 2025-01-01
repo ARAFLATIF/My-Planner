@@ -23,6 +23,18 @@ h1, h2, h3 {
     height: 80px;
     vertical-align: top;
     cursor: pointer;
+    position: relative;
+    padding: 5px;
+}
+
+.calendar td::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 
 .calendar .today {
@@ -30,8 +42,32 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-.calendar .has-content {
-    background-color: #e9ecef;
+.calendar .has-thought::after {
+    background-color: #28a745;
+}
+
+.calendar .has-challenge::after {
+    background-color: #007bff;
+}
+
+.calendar .has-todo::after {
+    background-color: #dc3545;
+}
+
+.calendar .has-thought.has-challenge::after {
+    background: linear-gradient(to right, #28a745 50%, #007bff 50%);
+}
+
+.calendar .has-thought.has-todo::after {
+    background: linear-gradient(to right, #28a745 50%, #dc3545 50%);
+}
+
+.calendar .has-challenge.has-todo::after {
+    background: linear-gradient(to right, #007bff 50%, #dc3545 50%);
+}
+
+.calendar .has-thought.has-challenge.has-todo::after {
+    background: conic-gradient(#28a745 0deg 120deg, #007bff 120deg 240deg, #dc3545 240deg 360deg);
 }
 
 .calendar .selected {
@@ -49,8 +85,13 @@ h1, h2, h3 {
     border: 1px solid #dee2e6;
     border-radius: 5px;
     padding: 15px;
+    margin-top: 20px;
 }
 
 #thoughtsSummary, #challengesSummary, #todosSummary {
     margin-top: 10px;
+}
+
+#selectedDate {
+    margin-bottom: 15px;
 }
