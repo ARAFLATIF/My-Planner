@@ -1,0 +1,36 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container {
+    max-width: 800px;
+}
+
+h1 {
+    color: #000000;
+    font-weight: bold;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-item .todo-text {
+    flex-grow: 1;
+}
+
+.todo-item .delete-todo {
+    margin-left: 10px;
+}
+
+.btn-outline-dark:hover {
+    background-color: #000000;
+    color: #ffffff;
+}

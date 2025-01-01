@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Thoughts - My Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="thoughts.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">My Thoughts</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label for="thoughtDate" class="form-label">Date:</label>
+                    <input type="date" class="form-control" id="thoughtDate">
+                </div>
+                <div class="mb-3">
+                    <label for="thoughtText" class="form-label">Your Thoughts:</label>
+                    <textarea class="form-control" id="thoughtText" rows="5"></textarea>
+                </div>
+                <button id="saveThought" class="btn btn-outline-dark">Save Thought</button>
+                <a href="index.html" class="btn btn-outline-secondary">Back to Home</a>
+                <a href="calendar.html" class="btn btn-outline-secondary">View Calendar</a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-8 offset-md-2">
+                <h2>Previous Thoughts</h2>
+                <div id="previousThoughts"></div>
+            </div>
+        </div>
+    </div>
+    <script src="thoughts.js"></script>
+</body>
+</html>
+

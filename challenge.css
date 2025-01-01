@@ -1,0 +1,26 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container {
+    max-width: 800px;
+}
+
+h1, h2 {
+    color: #000000;
+    font-weight: bold;
+}
+
+.challenge-item {
+    margin-bottom: 10px;
+}
+
+.challenge-checkbox {
+    margin-right: 10px;
+}
+
+.btn-outline-dark:hover {
+    background-color: #000000;
+    color: #ffffff;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge - My Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="challenge.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Daily Challenge</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="mb-3">
+                    <label for="challengeDate" class="form-label">Date:</label>
+                    <input type="date" class="form-control" id="challengeDate">
+                </div>
+                <div id="challengeList">
+                    <h2>Morning Routine</h2>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="wake-up" class="challenge-checkbox">
+                        <label for="wake-up">Wake up early</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="exercise" class="challenge-checkbox">
+                        <label for="exercise">Exercise for 1 hour (running, swimming, or weightlifting)</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="walk" class="challenge-checkbox">
+                        <label for="walk">Take a 30-minute walk in nature</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="meditate" class="challenge-checkbox">
+                        <label for="meditate">Spend 10 minutes in silent meditation</label>
+                    </div>
+
+                    <h2>Daytime Activities</h2>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="read" class="challenge-checkbox">
+                        <label for="read">Read 10 pages</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="learn" class="challenge-checkbox">
+                        <label for="learn">Dedicate 30 minutes to learning an online skill</label>
+                    </div>
+
+                    <h2>Evening Routine</h2>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="no-screen" class="challenge-checkbox">
+                        <label for="no-screen">No screen time 1 hour before bed</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="no-eating" class="challenge-checkbox">
+                        <label for="no-eating">No eating 3 hours before bed</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="write" class="challenge-checkbox">
+                        <label for="write">Write down thoughts, goals, and gratitude</label>
+                    </div>
+                    <div class="challenge-item">
+                        <input type="checkbox" id="sleep-environment" class="challenge-checkbox">
+                        <label for="sleep-environment">Ensure proper sleep environment</label>
+                    </div>
+                </div>
+                <button id="saveChallenge" class="btn btn-outline-dark mt-3">Save Progress</button>
+                <a href="index.html" class="btn btn-outline-secondary mt-3">Back to Home</a>
+                <a href="calendar.html" class="btn btn-outline-secondary mt-3">View Calendar</a>
+            </div>
+        </div>
+    </div>
+    <script src="challenge.js"></script>
+</body>
+</html>

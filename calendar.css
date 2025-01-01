@@ -1,0 +1,56 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container {
+    max-width: 800px;
+}
+
+h1, h2, h3 {
+    color: #000000;
+    font-weight: bold;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar td {
+    height: 80px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.calendar .today {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.calendar .has-content {
+    background-color: #e9ecef;
+}
+
+.calendar .selected {
+    background-color: #d1ecf1;
+    border: 2px solid #0056b3;
+}
+
+.btn-outline-dark:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+#dayDetails {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#thoughtsSummary, #challengesSummary, #todosSummary {
+    margin-top: 10px;
+}

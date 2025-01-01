@@ -1,0 +1,18 @@
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.container {
+    max-width: 800px;
+}
+
+h1 {
+    color: #000000;
+    font-weight: bold;
+}
+
+.btn-outline-dark:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
