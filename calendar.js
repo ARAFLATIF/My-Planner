@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     const isToday = date === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear();
                     const isSelected = date === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear();
                     const dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-                    const hasContent = checkContentForDate(dateString);
-                    const cellClass = `${isToday ? 'today' : ''} ${hasContent ? 'has-content' : ''} ${isSelected ? 'selected' : ''}`;
+                    const { hasThought, hasChallenge, hasTodo } = checkContentForDate(dateString);
+                    const cellClass = `${isToday ? 'today' : ''} ${hasThought ? 'has-thought' : ''} ${hasChallenge ? 'has-challenge' : ''} ${hasTodo ? 'has-todo' : ''} ${isSelected ? 'selected' : ''}`;
                     row += `<td class="${cellClass}" data-date="${dateString}">${date}</td>`;
                     date++;
                 }
@@ -63,9 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
         const challenges = JSON.parse(localStorage.getItem('challenges')) || {};
         const todos = JSON.parse(localStorage.getItem('todos')) || {};
-        return thoughts.some(thought => thought.date === dateString) ||
-               challenges[dateString] !== undefined ||
-               (todos[dateString] !== undefined && todos[dateString].length > 0);
+        return {
+            hasThought: thoughts.some(thought => thought.date === dateString),
+            hasChallenge: challenges[dateString] !== undefined,
+            hasTodo: todos[dateString] !== undefined && todos[dateString].length > 0
+        };
     }
 
     function showDayDetails(dateString) {
